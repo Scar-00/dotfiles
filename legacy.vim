@@ -9,10 +9,6 @@ endfunction
 
 command! -nargs=1 SetTab call SetTab(<f-args>)
 
-"let g:gruvbox_contrast_dark='medium'
-"let g:gruvbox_contrast_light='hard'
-colorscheme tokyonight-storm
-
 nnoremap <c-z> <nop>
 
 autocmd BufRead,BufNewFile * SetTab 4

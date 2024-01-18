@@ -19,7 +19,9 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ',qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ',f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'sd', '<cmd>lua vim.diagnostic.open_float(1, {scope="line"})<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ee', '<cmd>lua vim.diagnostic.open_float(1, {scope="line"})<CR>', opts)
+
+    vim.lsp.inlay_hint(bufnr, true)
 end
 
 local servers = { 'clangd', 'rust_analyzer' }

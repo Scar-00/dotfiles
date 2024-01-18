@@ -29,12 +29,13 @@ return require('packer').startup(function(use)
   use 'tpope/vim-fugitive'
   --use {'neoclide/coc.nvim', branch = 'release'}
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    'nvim-telescope/telescope.nvim', tag = '0.1.4',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use 'morhetz/gruvbox'
   use 'nvim-treesitter/nvim-treesitter'
   use 'sbdchd/neoformat'
   use 'folke/tokyonight.nvim'
+  use 'maxmx03/fluoromachine.nvim'
+  use 'rose-pine/neovim'
 end)
-
