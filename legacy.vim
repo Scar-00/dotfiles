@@ -18,4 +18,3 @@ let g:EasyMotion_startofline = 1
 "        \ coc#pum#visible() ? coc#_select_confirm() :
 "        \ "\<Tab>"
 
-au BufRead,BufNewFile *.ly set filetype=lygos

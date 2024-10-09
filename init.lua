@@ -28,26 +28,26 @@ require('vim')
 
 require('lualine').setup()
 
-require('nvim-treesitter.configs').setup {
-    ensure_installed = {"c", "cpp"},
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
-
 -- nvim-treesitter
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.lygos = {
   install_info = {
-    url = "https://github.com/Scar-00/tree-sitter-lygos", -- local path or git repo
+    url = "C:\\dev\\lygos\\treesitter-lygos", -- local path or git repo
     files = {"src/parser.c"},
     -- optional entries:
     --branch = "main", -- default branch in case of git repo if different from master
     --generate_requires_npm = true, -- if stand-alone parser without npm dependencies
     --requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
   },
---  filetype = "ly", -- if filetype does not agrees with parser name
+  filetype = "lygos", -- if filetype does not agrees with parser name
+}
+
+require('nvim-treesitter.configs').setup {
+    ensure_installed = {"c", "cpp"},
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
 }
 
 require('nvim-autopairs').setup {}

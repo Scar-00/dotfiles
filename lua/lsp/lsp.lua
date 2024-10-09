@@ -21,10 +21,10 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ',f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ee', '<cmd>lua vim.diagnostic.open_float(1, {scope="line"})<CR>', opts)
 
-    vim.lsp.inlay_hint(bufnr, true)
+    --vim.lsp.inlay_hint(bufnr, true)
 end
 
-local servers = { 'clangd', 'rust_analyzer' }
+local servers = { 'clangd', 'rust_analyzer', "slint_lsp", "zls" }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -55,6 +55,13 @@ require('lspconfig').clangd.setup {
     init_option = { fallbackFlags = { '-std=c++a2' } }
 }
 
+require('lspconfig').slint_lsp.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = { 'slint-lsp' },
+    filetypes = { 'slint' },
+}
+
 require('lspconfig').rust_analyzer.setup {
     on_attach = on_attach,
     setting = {
@@ -67,6 +74,11 @@ require('lspconfig').rust_analyzer.setup {
     flags = {
         debounce_text_changes = 150,
     }
+}
+
+require('lspconfig').zls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
 --require('lspconfig').lygos_lsp.setup {

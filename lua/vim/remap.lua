@@ -9,9 +9,18 @@ vim.opt.wrap = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.mouse = "a"
+--tabs
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+
 --vim.opt.shortmess = "c"
 vim.opt.signcolumn = "yes"
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 local opts = { noremap=true, silent=true }
 --vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>', opts)
 --vim.api.nvim_set_keymap('n', '<C-g>', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>', opts)
@@ -38,5 +47,5 @@ vim.keymap.set("i", "<C-v>", "<Esc>p")
 vim.keymap.set("i", "<C-z>", "<Esc>ui")
 vim.keymap.set("v", "<C-z>", "<Esc>ui")
 
---vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
---vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
