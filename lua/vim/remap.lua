@@ -46,6 +46,3 @@ vim.keymap.set("v", "<C-x>", "d<Esc>i")
 vim.keymap.set("i", "<C-v>", "<Esc>p")
 vim.keymap.set("i", "<C-z>", "<Esc>ui")
 vim.keymap.set("v", "<C-z>", "<Esc>ui")
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

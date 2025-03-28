@@ -26,6 +26,8 @@ require('lsp_signature').setup(lsp_signature_cfg)
 
 require('vim')
 
+require('neovide')
+
 require('lualine').setup()
 
 -- nvim-treesitter
