@@ -9,7 +9,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
     --add option to go up
     --vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ge', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover({border = \'rounded\'})<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 's', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'i', ',s', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ',qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', ',f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ee', '<cmd>lua vim.diagnostic.open_float(1, {scope="line"})<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'ee', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
     --vim.lsp.inlay_hint(bufnr, true)
 end
@@ -44,7 +44,7 @@ vim.diagnostic.config{
   float={border=_border}
 }
 
-local servers = { 'clangd', 'rust_analyzer', "slint_lsp", "zls", "tsserver", "texlab", "lua_ls", "luau_lsp" }
+local servers = { 'clangd', 'rust_analyzer', "slint_lsp", "zls", "texlab", "lua_ls" }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -101,12 +101,12 @@ require('lspconfig').zls.setup {
     capabilities = capabilities,
 }
 
-require('lspconfig').tsserver.setup {
+--[[require('lspconfig').tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" }
-}
+}]]
 
 require('lspconfig').texlab.setup {
     on_attach = on_attach,

@@ -38,4 +38,10 @@ return require('packer').startup(function(use)
   use 'folke/tokyonight.nvim'
   use 'maxmx03/fluoromachine.nvim'
   use 'rose-pine/neovim'
+  use({
+    "kdheepak/lazygit.nvim",
+    requires = {
+        "nvim-lua/plenary.nvim",
+    },
+  })
 end)
