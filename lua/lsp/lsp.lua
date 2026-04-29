@@ -28,23 +28,61 @@ end
 
 local _border = "rounded"
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = _border
-  }
-)
-
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help, {
     border = _border
   }
 )
 
-vim.diagnostic.config{
-  float={border=_border}
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = _border
+  }
+)
+
+vim.lsp.handlers["textDocument/completion"] = vim.lsp.with(
+    vim.lsp.handlers.completion, {
+        border = _border
+    }
+)
+
+vim.diagnostic.config {
+  float={ border=_border }
 }
 
-local servers = { 'clangd', 'rust_analyzer', "slint_lsp", "zls", "texlab", "lua_ls" }
+vim.lsp.config('*', {
+    on_attach = on_attach,
+    capabilities = capabilities,
+});
+
+vim.lsp.config.rust_analyzer = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+};
+
+vim.lsp.config.ts_ls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+};
+
+vim.lsp.config.zls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+};
+
+vim.lsp.config.clangd = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+};
+
+vim.lsp.config.csharp_ls = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+};
+
+vim.lsp.enable({ 'clangd', 'rust_analyzer', "slint_lsp", "zls", "texlab", "lua_ls", "ts_ls", "csharp_ls" });
+
+--[[local servers = { 'clangd', 'rust_analyzer', "slint_lsp", "zls", "texlab", "lua_ls" }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
         on_attach = on_attach,
@@ -72,17 +110,10 @@ require('lspconfig').clangd.setup {
         "--header-insertion-decorators",
     },
     filetypes = { 'c', 'cpp' },
-    init_option = { fallbackFlags = { '-std=c++a2' } }
-}
+    --init_option = { fallbackFlags = { '-std=c++a2' } }
+}]]
 
-require('lspconfig').slint_lsp.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    cmd = { 'slint-lsp' },
-    filetypes = { 'slint' },
-}
-
-require('lspconfig').rust_analyzer.setup {
+--[[require('lspconfig').rust_analyzer.setup {
     on_attach = on_attach,
     setting = {
         ['rust_analyzer'] = {
@@ -106,12 +137,9 @@ require('lspconfig').zls.setup {
     capabilities = capabilities,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
     cmd = { "typescript-language-server", "--stdio" }
-}]]
+}
 
 require('lspconfig').texlab.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "tex" },
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "tex" },
@@ -121,14 +149,4 @@ require('lspconfig').texlab.setup {
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities
-    --filetypes = { "tex" },
-    --cmd = { "C:/dev/rust/texlab/target/release/texlab" }
-}
-
---require('lspconfig').lygos_lsp.setup {
---    on_attach = on_attach,
---    cmd = {
---        "~/Desktop/lygos-lsp/target/debug/lygos-lsp",
---    },
---    filetypes = { 'ly' },
---}
+}]]

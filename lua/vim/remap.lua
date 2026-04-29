@@ -46,3 +46,5 @@ vim.keymap.set("v", "<C-x>", "d<Esc>i")
 vim.keymap.set("i", "<C-v>", "<Esc>p")
 vim.keymap.set("i", "<C-z>", "<Esc>ui")
 vim.keymap.set("v", "<C-z>", "<Esc>ui")
+
+vim.o.winborder= "rounded"

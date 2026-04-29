@@ -8,6 +8,9 @@ fm.setup {
 }
 
 require('rose-pine').setup({
+    enable = {
+        terminal = true
+    },
     styles = {
         bold = false,
         italic = false,

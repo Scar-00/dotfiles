@@ -7,6 +7,10 @@ vim.cmd([[
 require('lsp')
 --require('nvimcmp')
 
+require("mason").setup()
+require('fidget').setup{}
+--require('smear_cursor').setup{}
+
 lsp_signature_cfg = {
     hint_prefix = "",
     floating_window = true,
@@ -30,22 +34,23 @@ require('neovide')
 
 require('lualine').setup()
 
+vim.g.compile_mode = {
+    input_word_completion = true,
+    focus_compilation_buffer = true,
+}
+
 -- nvim-treesitter
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.lygos = {
-  install_info = {
-    url = "C:\\dev\\lygos\\treesitter-lygos", -- local path or git repo
-    files = {"src/parser.c"},
-    -- optional entries:
-    --branch = "main", -- default branch in case of git repo if different from master
-    --generate_requires_npm = true, -- if stand-alone parser without npm dependencies
-    --requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-  },
-  filetype = "lygos", -- if filetype does not agrees with parser name
+    install_info = {
+        url = "C:\\dev\\lygos\\treesitter-lygos", -- local path or git repo
+        files = {"src/parser.c"},
+    },
+    filetype = "lygos", -- if filetype does not agrees with parser name
 }
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = {"c", "cpp"},
+    ensure_installed = { "c", "cpp" },
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,

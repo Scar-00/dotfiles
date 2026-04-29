@@ -44,4 +44,8 @@ return require('packer').startup(function(use)
         "nvim-lua/plenary.nvim",
     },
   })
+  use 'j-hui/fidget.nvim'
+  use 'mason-org/mason.nvim'
+  use 'sphamba/smear-cursor.nvim'
+  use 'ej-shafran/compile-mode.nvim'
 end)
