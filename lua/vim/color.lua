@@ -16,11 +16,12 @@ require('rose-pine').setup({
         italic = false,
         transparency = true,
     },
-})
+});
 
 --vim.cmd.colorscheme('tokyonight-night')
 --vim.cmd.colorscheme('fluoromachine')
-vim.cmd.colorscheme('rose-pine')
+--vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('gruber-darker')
 
 vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 vim.api.nvim_set_hl(0, "PmenuSel", { fg = "#e0def4", bg = "#403d52", bold = true })

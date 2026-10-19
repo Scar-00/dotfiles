@@ -1,5 +1,11 @@
 require('plugin')
 
+vim.filetype.add({
+    extension = {
+        mdx = 'markdown.mdx',
+    },
+})
+
 vim.cmd([[
 	so ~/.config/nvim/legacy.vim
 ]])
@@ -20,12 +26,6 @@ lsp_signature_cfg = {
     }
 }
 
-vim.filetype.add({
-    extention = {
-        ly = 'lygos'
-    },
-})
-
 require('lsp_signature').setup(lsp_signature_cfg)
 
 require('vim')
@@ -39,23 +39,7 @@ vim.g.compile_mode = {
     focus_compilation_buffer = true,
 }
 
--- nvim-treesitter
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.lygos = {
-    install_info = {
-        url = "C:\\dev\\lygos\\treesitter-lygos", -- local path or git repo
-        files = {"src/parser.c"},
-    },
-    filetype = "lygos", -- if filetype does not agrees with parser name
-}
-
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { "c", "cpp" },
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
-}
+require('nvim-treesitter').setup()
+require('lygos').setup({ parser_path = 'C:/dev/learning/lygos/tree-sitter-lygos' })
 
 require('nvim-autopairs').setup {}
-

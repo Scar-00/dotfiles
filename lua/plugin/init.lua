@@ -1,51 +1,38 @@
-vim.cmd [[packadd packer.nvim]]
+local gh = function(repo)
+    return 'https://github.com/' .. repo
+end
 
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  use 'neovim/nvim-lspconfig'
-  use 'ray-x/lsp_signature.nvim'
-  --use 'lvimuser/lsp-inlayhints.nvim'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use('hrsh7th/vim-vsnip')
-  use 'zefei/vim-colortuner'
-  use 'rust-lang/rust.vim'
-  --use 'simrat39/rust-tools.nvim'
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-
-  use {
-   'nvim-lualine/lualine.nvim',
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-  }
-  use 'ntpeters/vim-better-whitespace'
-  use 'windwp/nvim-autopairs'
-  use 'easymotion/vim-easymotion'
-  use 'tpope/vim-fugitive'
-  --use {'neoclide/coc.nvim', branch = 'release'}
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    requires = { {'nvim-lua/plenary.nvim'} }
-  }
-  use 'morhetz/gruvbox'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'sbdchd/neoformat'
-  use 'folke/tokyonight.nvim'
-  use 'maxmx03/fluoromachine.nvim'
-  use 'rose-pine/neovim'
-  use({
-    "kdheepak/lazygit.nvim",
-    requires = {
-        "nvim-lua/plenary.nvim",
-    },
-  })
-  use 'j-hui/fidget.nvim'
-  use 'mason-org/mason.nvim'
-  use 'sphamba/smear-cursor.nvim'
-  use 'ej-shafran/compile-mode.nvim'
-end)
+vim.pack.add({
+    gh('neovim/nvim-lspconfig'),
+    gh('ray-x/lsp_signature.nvim'),
+    gh('hrsh7th/cmp-nvim-lsp'),
+    gh('hrsh7th/cmp-buffer'),
+    gh('hrsh7th/cmp-path'),
+    gh('hrsh7th/cmp-cmdline'),
+    gh('hrsh7th/nvim-cmp'),
+    gh('hrsh7th/vim-vsnip'),
+    gh('zefei/vim-colortuner'),
+    gh('rust-lang/rust.vim'),
+    gh('mfussenegger/nvim-dap'),
+    gh('rcarriga/nvim-dap-ui'),
+    gh('nvim-lualine/lualine.nvim'),
+    gh('nvim-tree/nvim-web-devicons'),
+    gh('ntpeters/vim-better-whitespace'),
+    gh('windwp/nvim-autopairs'),
+    gh('easymotion/vim-easymotion'),
+    gh('tpope/vim-fugitive'),
+    gh('nvim-lua/plenary.nvim'),
+    gh('nvim-telescope/telescope.nvim'),
+    gh('morhetz/gruvbox'),
+    gh('nvim-treesitter/nvim-treesitter'),
+    gh('sbdchd/neoformat'),
+    gh('folke/tokyonight.nvim'),
+    gh('maxmx03/fluoromachine.nvim'),
+    { src = gh('rose-pine/neovim'), name = 'rose-pine' },
+    gh('kdheepak/lazygit.nvim'),
+    gh('j-hui/fidget.nvim'),
+    gh('mason-org/mason.nvim'),
+    gh('sphamba/smear-cursor.nvim'),
+    gh('ej-shafran/compile-mode.nvim'),
+    gh('ring0-rootkit/gruber-darker.nvim')
+}, { confirm = false })
