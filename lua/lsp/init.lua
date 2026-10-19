@@ -1,2 +1,2 @@
-require('lsp.cmp')
+require('lsp.completion')
 require('lsp.lsp')
